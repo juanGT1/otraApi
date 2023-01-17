@@ -33,7 +33,7 @@ public class VistaPopular extends AppCompatActivity {
     private List<DatosApi>  lista = new ArrayList<>();
     private RecyclerView recyclerView;
     private AdapterPeliculas adapterPeliculas;
-    private int page;
+    private int page = 1;
     private boolean cargaPagina;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,24 @@ public class VistaPopular extends AppCompatActivity {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy>0){
+
+                if (dy < 0){
+                    int pastVertical = layoutManager.findLastVisibleItemPosition();
+                    if (cargaPagina &&  pastVertical==5){
+                        if (page==1){
+
+                        } else  {
+                            cargaPagina = false;
+                            page-=1;
+                            optenDatos(page);
+                        }
+                    }
+
+                }
+
+
+
+                if (dy > 0){
                     int visibleItemCount = layoutManager.getChildCount();
                     int totalItemCount = layoutManager.getItemCount();
                     int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
@@ -61,20 +78,14 @@ public class VistaPopular extends AppCompatActivity {
                             optenDatos(page);
 
                         }
-//                        if ((pastVisibleItems -visibleItemCount) <= totalItemCount) {
-//
-//                            cargaPagina = false;
-//                            page -=1;
-//                            optenDatos(page);
-//
-//                        }
+
                     }
 
                 }
             }
         });
         cargaPagina = true;
-        page = 1;
+
         optenDatos(page);
 
     }

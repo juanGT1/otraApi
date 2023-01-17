@@ -48,6 +48,22 @@ public class VisataTop extends AppCompatActivity  {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                if (dy < 0){
+
+                    int pastVertical = layoutManager.findLastVisibleItemPosition();
+                    if (cargaPagina &&  pastVertical==5){
+                        if (page==1){
+
+                        } else  {
+                            cargaPagina = false;
+                            page-=1;
+                            optenDatos(page);
+                        }
+                    }
+
+                }
+
+
                 if (dy>0){
                     int visibleItemCount = layoutManager.getChildCount();
                     int totalItemCount = layoutManager.getItemCount();

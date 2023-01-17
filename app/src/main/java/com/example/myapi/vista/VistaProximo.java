@@ -33,8 +33,10 @@ public class VistaProximo extends AppCompatActivity {
     public RecyclerView recyclerView;
     public AdapterPeliculas adapterPeliculas;
     //private DatosApi item;
-    private int page;
+    private int page = 1;
     private boolean cargaPagina;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,40 +49,52 @@ public class VistaProximo extends AppCompatActivity {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy>0){
-                    int visibleItemCount = layoutManager.getChildCount();
-                    int totalItemCount = layoutManager.getItemCount();
-                    int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
 
-                    if (cargaPagina){
-                        if ((visibleItemCount + pastVisibleItems) >= totalItemCount){
-                            Log.i(TAG,"lllegamos al final");
+
+
+                if (dy <0) {
+                    int pastVertical = layoutManager.findLastVisibleItemPosition();//
+                    Log.w(TAG,"pasv "+ pastVertical + " pag "+ page);
+                    if (cargaPagina &&  pastVertical==5){
+                        if (page==1){
+
+                        } else  {
+                            cargaPagina = false;
+                            page-=1;
+                            optenDatos(page);
+                        }
+                    }
+                }
+
+
+                if (dy > 0) {
+                    int visibleItemCount = layoutManager.getChildCount();//Devuelve el número actual de vistas secundarias adjuntas al RecyclerView principal. Esto no incluye las vistas secundarias que se separaron o descartaron temporalmente.
+                    int totalItemCount = layoutManager.getItemCount(); //Devuelve la cantidad de elementos en el adaptador vinculado al RecyclerView principal. Tenga en cuenta que este número no es necesariamente igual a StategetItemCount().
+                    int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();//Devuelve la posición del adaptador de la primera vista visible. Esta posición no incluye los cambios de adaptador que se enviaron después del último pase de diseño.
+                    Log.w(TAG, "lllegamos al final"+"/visibleItemCount "+visibleItemCount+
+                            "/totalItemCount " +totalItemCount+"/pastVisibleItems "+pastVisibleItems
+                    +" dy "+dy+" dx "+" page "+page);
+                    if (cargaPagina) {
+                        if (  pastVisibleItems==14) {
 
                             cargaPagina = false;
-                            page +=1;
+                            page += 1;
                             optenDatos(page);
-
                         }
-//                        if ((pastVisibleItems -visibleItemCount) <= totalItemCount) {
-//
-//                            cargaPagina = false;
-//                            page -=1;
-//                            optenDatos(page);
-//
-//                        }
+
                     }
 
                 }
             }
         });
         cargaPagina = true;
-        page = 1;
+
         optenDatos(page);
 
 
     }
 
-    public void optenDatos(int page){
+    public void optenDatos(int page) {
         Call<results> call = LlamaApi.getllamaApi().create(ApiPeliculas.class)
                 .leerpopular("511174b10ded86a2c00770c3b55b5b88", page, "es-US");
         call.enqueue(new Callback<results>() {
@@ -90,6 +104,7 @@ public class VistaProximo extends AppCompatActivity {
                 cargaPagina = true;
                 results info = response.body();
                 lista = Arrays.asList(info.getResults());
+
                 adapterPeliculas = new AdapterPeliculas(lista, getApplicationContext(), new AdapterPeliculas.OnItemClickListener() {
                     @Override
                     public void onItemClick(DatosApi item) {
@@ -114,9 +129,9 @@ public class VistaProximo extends AppCompatActivity {
     }
 
 
-    public void moveToDescripcion(DatosApi item){
-        Intent intent = new Intent(this,VistaDescripcion.class);
-        intent.putExtra("datosApi",item);
+    public void moveToDescripcion(DatosApi item) {
+        Intent intent = new Intent(this, VistaDescripcion.class);
+        intent.putExtra("datosApi", item);
         startActivity(intent);
     }
 

@@ -4,24 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.VistaDescripcion">
-
+    tools:context=".vista.DescripciondeFavorito">
 
 
     <ImageView
-        android:id="@+id/atras"
+        android:id="@+id/atras2"
         android:layout_width="34dp"
         android:layout_height="37dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:onClick="retrocede"
+        android:onClick="retrocedee"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/atras"
         tools:ignore="UsingOnClickInXml" />
 
     <ImageView
-        android:id="@+id/imgDescription"
+        android:id="@+id/imgDescription2"
         android:layout_width="244dp"
         android:layout_height="162dp"
         android:layout_marginTop="4dp"
@@ -42,7 +41,7 @@
         app:layout_constraintGuide_percent="0.27" />
 
     <TextView
-        android:id="@+id/tvdescription"
+        android:id="@+id/tvdescription2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -55,7 +54,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <ImageView
-        android:id="@+id/imgfavorito"
+        android:id="@+id/imgfavorito2"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -64,19 +63,21 @@
         app:layout_constraintHorizontal_bias="0.046"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvdescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvdescription2"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/iconfavorito"
         />
 
     <ImageView
-        android:id="@+id/corazon"
+        android:id="@+id/corazon2"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="316dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvdescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvdescription2"
         app:srcCompat="@drawable/iconcorazon" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

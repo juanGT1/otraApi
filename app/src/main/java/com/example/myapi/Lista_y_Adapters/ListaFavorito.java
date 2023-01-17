@@ -2,6 +2,7 @@ package com.example.myapi.Lista_y_Adapters;
 
 import java.io.Serializable;
 
+
 public class ListaFavorito implements Serializable {
 
 

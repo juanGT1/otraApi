@@ -70,7 +70,7 @@ public class AdapterPeliculas extends RecyclerView.Adapter<AdapterPeliculas.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView portada;
+        ImageView portada,ojo;
         TextView titulo, vistas;
         RatingBar calificacion;
         public ViewHolder(@NonNull View itemView) {
@@ -79,6 +79,7 @@ public class AdapterPeliculas extends RecyclerView.Adapter<AdapterPeliculas.View
             titulo = itemView.findViewById(R.id.titulo);
             calificacion = itemView.findViewById(R.id.calificacion);
             vistas = itemView.findViewById(R.id.vistas);
+            ojo = itemView.findViewById(R.id.ojo);
 
         }
 
@@ -92,7 +93,6 @@ public class AdapterPeliculas extends RecyclerView.Adapter<AdapterPeliculas.View
         }
 
     }
-
 
 
 

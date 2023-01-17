@@ -76,7 +76,6 @@ public class VistaBusqueda extends AppCompatActivity implements Direccionvista {
             }
         });
 
-
     }
 
     public void moveToDescripcion(DatosApi item) {
@@ -137,22 +136,20 @@ public class VistaBusqueda extends AppCompatActivity implements Direccionvista {
         });
 
 
-
-
-
     }
+
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(VistaBusqueda.this,Vista.class);
+        Intent intent = new Intent(VistaBusqueda.this, Vista.class);
         startActivity(intent);
         finish();
     }
 
-    public void atras(View v){
-        Intent intent = new Intent(VistaBusqueda.this,Vista.class);
-            startActivity(intent);
-            finish();
+    public void atras(View v) {
+        Intent intent = new Intent(VistaBusqueda.this, Vista.class);
+        startActivity(intent);
+        finish();
     }
 
 

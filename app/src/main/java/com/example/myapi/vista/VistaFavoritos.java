@@ -72,7 +72,7 @@ public class VistaFavoritos extends AppCompatActivity {
         Collections.reverse(favoritoList);
         AdapterFavorito adapterFavorito = new AdapterFavorito(favoritoList, this, new AdapterFavorito.OnItemClickListener() {
             @Override
-            public void onItemClick(DatosApi item) {
+            public void onItemClick(ListaFavorito item) {
               moveToDescripcion(item);
             }
         });
@@ -103,6 +103,7 @@ public class VistaFavoritos extends AppCompatActivity {
                 peliFavorita.setPoster_path(cursor.getString(1));
                 peliFavorita.setPopularity(cursor.getString(2));
                 peliFavorita.setVote_average(cursor.getString(3));
+                peliFavorita.setOverview(cursor.getString(4));
                 peliFavoritad.add(peliFavorita);
 
             } while (cursor.moveToNext());
@@ -113,10 +114,11 @@ public class VistaFavoritos extends AppCompatActivity {
         }
     }
 
-    public void moveToDescripcion(DatosApi item) {
-        Intent intent = new Intent(this, VistaDescripcion.class);
-        intent.putExtra("datosApi", item);
+    public void moveToDescripcion(ListaFavorito item) {
+        Intent intent = new Intent(this,DescripciondeFavorito.class);
+        intent.putExtra("datosFavorito", item);
         startActivity(intent);
+        finish();
     }
 
 

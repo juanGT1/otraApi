@@ -21,13 +21,14 @@ import java.util.List;
 public class AdapterFavorito extends  RecyclerView.Adapter<AdapterFavorito.ViewHolder>{
 
     private List<ListaFavorito> favoritoList;
+    List<DatosApi> datosApiList;
     LayoutInflater inflater;
     Context context;
 
     final AdapterFavorito.OnItemClickListener listener;
 
     public  interface OnItemClickListener{
-        void onItemClick(DatosApi item);
+        void onItemClick(ListaFavorito item);
     }
 
 
@@ -51,7 +52,7 @@ public class AdapterFavorito extends  RecyclerView.Adapter<AdapterFavorito.ViewH
         holder.titulo.setText(favoritoList.get(position).getTitle());
         holder.vistas.setText(favoritoList.get(position).getPopularity());
         holder.calificacion.setRating(Float.parseFloat(favoritoList.get(position).getVote_average()));
-        //holder.bindata(favoritoList.get(position));
+        holder.bindata(favoritoList.get(position));
         Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500" + imagen.getPoster_path())
                 .circleCrop()
@@ -77,14 +78,14 @@ public class AdapterFavorito extends  RecyclerView.Adapter<AdapterFavorito.ViewH
             vistas = itemView.findViewById(R.id.vistasf);
         }
 
-//        void bindata ( final ListaFavorito item){
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    listener.onItemClick(item);
-//                }
-//            });
-//        }
+     public void bindata( ListaFavorito item){
+           itemView.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   listener.onItemClick( item);
+               }
+           });
+     }
 
     }
 }

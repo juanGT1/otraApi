@@ -14,7 +14,8 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lupaa" />
+        app:srcCompat="@drawable/lupaa"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

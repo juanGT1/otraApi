@@ -59,6 +59,7 @@ public class Vista extends AppCompatActivity {
 
     Direccionpresenter p;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +82,22 @@ public class Vista extends AppCompatActivity {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+
+                if (dy < 0){
+                    int pastVertical = layoutManager.findLastVisibleItemPosition();
+                    if (cargaPagina &&  pastVertical==5){
+                        if (page==1){
+
+                        } else  {
+                            cargaPagina = false;
+                            page-=1;
+                            obtenDatos(page);
+                        }
+                    }
+                }
+
+
+
                 if (dy > 0) {
                     int visibleItemCount = layoutManager.getChildCount();
                     int totalItemCount = layoutManager.getItemCount();
@@ -202,7 +219,7 @@ public class Vista extends AppCompatActivity {
         Intent intent = new Intent(this, VistaDescripcion.class);
         intent.putExtra("datosApi", item);
         startActivity(intent);
-        finish();
+//        finish();
 
 
     }

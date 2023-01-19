@@ -8,10 +8,10 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/peli"
+        android:id="@+id/splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/peli"
+        app:srcCompat="@drawable/splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

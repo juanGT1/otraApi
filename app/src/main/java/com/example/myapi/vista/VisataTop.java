@@ -78,13 +78,7 @@ public class VisataTop extends AppCompatActivity  {
                             optenDatos(page);
 
                         }
-//                        if ((pastVisibleItems -visibleItemCount) <= totalItemCount) {
-//
-//                            cargaPagina = false;
-//                            page -=1;
-//                            optenDatos(page);
-//
-//                        }
+
                     }
 
                 }

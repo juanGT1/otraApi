@@ -21,4 +21,7 @@ public class Modelo implements Direccionmodelo {
         presenter.ResultBusqueda(call);
 
     }
+
+
+
 }

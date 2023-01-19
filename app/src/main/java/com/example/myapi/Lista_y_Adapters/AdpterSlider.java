@@ -44,7 +44,7 @@ public class AdpterSlider extends  RecyclerView.Adapter<AdpterSlider.ViewHolder>
         DatosApi imagen = datosApiList.get(position);
         Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500" + imagen.getPoster_path())
-                .override(800,600)
+                .override(300,300)
                 .into(holder.caratula);
     }
 

@@ -17,7 +17,7 @@
         android:onClick="retrocede"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/atras"
+        app:srcCompat="@drawable/flecha"
         tools:ignore="UsingOnClickInXml" />
 
     <ImageView
@@ -42,41 +42,97 @@
         app:layout_constraintGuide_percent="0.27" />
 
     <TextView
+        android:id="@+id/tituloo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Titulo"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+    <TextView
         android:id="@+id/tvdescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:text="TextView"
+        android:text="descripcion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="vistas:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvdescription" />
+
+    <TextView
+        android:id="@+id/visto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.010"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/tvdescription" />
+
+    <RatingBar
+        android:id="@+id/califi"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/app_name"
+        android:numStars="10"
+        android:progressTint="@color/teal_700"
+        android:rating="1.5"
+        android:secondaryProgressTint="@color/teal_700"
+        android:stepSize="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ImageView
         android:id="@+id/imgfavorito"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:visibility="visible"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
-        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvdescription"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/iconfavorito"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/califi"
+        app:layout_constraintVertical_bias="0.11"
+        app:srcCompat="@drawable/corazon" />
 
     <ImageView
         android:id="@+id/corazon"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="316dp"
         android:visibility="gone"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvdescription"
-        app:srcCompat="@drawable/iconcorazon" />
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/califi"
+        app:layout_constraintVertical_bias="0.11"
+        app:srcCompat="@drawable/corazonfav" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

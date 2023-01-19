@@ -41,7 +41,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
-                app:srcCompat="@drawable/peli" />
+                app:srcCompat="@drawable/splash" />
 
 
 
@@ -64,17 +64,16 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/vistasf"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="78dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="77dp"
                 android:layout_toEndOf="@+id/imagenpeliculaf"
                 android:contentDescription="@string/app_name"
                 android:numStars="10"
-                android:rating="1.5"
-                android:stepSize="0.5"
                 android:progressTint="@color/teal_700"
+                android:rating="1.5"
                 android:secondaryProgressTint="@color/teal_700"
-                />
+                android:stepSize="0.5" />
 
 
         </RelativeLayout>

@@ -59,13 +59,12 @@ public class Vista extends AppCompatActivity {
 
     Direccionpresenter p;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista);
-        mastop = findViewById(R.id.mastop);
         imageView = findViewById(R.id.imageView);
+        mastop = findViewById(R.id.mastop);
         vistaFavorito = findViewById(R.id.favorito);
         proximo = findViewById(R.id.proximo);
         popular = findViewById(R.id.popular);

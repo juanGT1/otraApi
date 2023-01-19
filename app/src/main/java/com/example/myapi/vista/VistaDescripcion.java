@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +20,8 @@ import com.example.myapi.model.BDfavorito;
 import com.example.myapi.model.DatosApi;
 
 public class VistaDescripcion extends AppCompatActivity {
-    TextView descripcion;
+    TextView descripcion, tituloo, vistas;
+    RatingBar calificacion;
     ImageView img, favorito,corazon;
     String titulo;
     @SuppressLint("MissingInflatedId")
@@ -28,13 +30,19 @@ public class VistaDescripcion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista_descripcion);
         descripcion = findViewById(R.id.tvdescription);
+        tituloo = findViewById(R.id.tituloo);
+        calificacion = findViewById(R.id.califi);
+        vistas = findViewById(R.id.visto);
         img = findViewById(R.id.imgDescription);
         favorito = findViewById(R.id.imgfavorito);
         corazon = findViewById(R.id.corazon);
 
         DatosApi datosApi = (DatosApi) getIntent().getExtras().getSerializable("datosApi");
-                descripcion.setText(datosApi.getOverview());
-              titulo = datosApi.getTitle();
+        descripcion.setText(datosApi.getOverview());
+        tituloo.setText(datosApi.getTitle());
+        calificacion.setRating((float) datosApi.getVote_average());
+        vistas.setText(String.valueOf(datosApi.getPopularity()));
+        titulo = datosApi.getTitle();
         //Log.w("Titulo",datosApi.getTitle());
 
         Glide.with(this).load("https://image.tmdb.org/t/p/w500" +datosApi.getPoster_path())

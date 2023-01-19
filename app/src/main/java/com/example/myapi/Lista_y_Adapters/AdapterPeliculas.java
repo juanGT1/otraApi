@@ -1,7 +1,6 @@
 package com.example.myapi.Lista_y_Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.myapi.R;
 import com.example.myapi.model.DatosApi;
-import com.example.myapi.vista.VistaFavoritos;
 
 import java.util.List;
 
@@ -39,7 +37,7 @@ public class AdapterPeliculas extends RecyclerView.Adapter<AdapterPeliculas.View
 
     @NonNull
     @Override
-    public AdapterPeliculas.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapterPeliculas.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.itempeliculas, null);
         return new AdapterPeliculas.ViewHolder(view);
     }
@@ -49,7 +47,7 @@ public class AdapterPeliculas extends RecyclerView.Adapter<AdapterPeliculas.View
         DatosApi imagen = datosApiList.get(position);
         holder.titulo.setText(datosApiList.get(position).getTitle());
         holder.vistas.setText(String.valueOf(datosApiList.get(position).getPopularity()));
-        holder.calificacion.setRating((float ) datosApiList.get(position).getVote_average());
+        holder.calificacionn.setRating((float) datosApiList.get(position).getVote_average());
         holder.bindata(datosApiList.get(position));
         Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500" + imagen.getPoster_path())
@@ -72,15 +70,13 @@ public class AdapterPeliculas extends RecyclerView.Adapter<AdapterPeliculas.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView portada,ojo;
         TextView titulo, vistas;
-        RatingBar calificacion;
+        RatingBar calificacionn;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             portada = itemView.findViewById(R.id.imagenpelicula);
             titulo = itemView.findViewById(R.id.titulo);
-            calificacion = itemView.findViewById(R.id.calificacion);
+            calificacionn = itemView.findViewById(R.id.calificacion);
             vistas = itemView.findViewById(R.id.vistas);
-            ojo = itemView.findViewById(R.id.ojo);
-
         }
 
         void bindata ( final DatosApi item){

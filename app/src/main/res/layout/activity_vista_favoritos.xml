@@ -30,13 +30,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/favoritop"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/iconinicio" />
+        app:srcCompat="@drawable/inicio" />
+
     <ImageView
         android:id="@+id/favoritop"
         android:layout_width="0dp"
         android:layout_height="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/iconfavorito"
+        app:srcCompat="@drawable/corazon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iniciop"
 

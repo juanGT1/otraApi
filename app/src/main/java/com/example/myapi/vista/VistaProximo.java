@@ -8,9 +8,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.myapi.Lista_y_Adapters.AdapterPeliculas;
@@ -31,16 +37,28 @@ import retrofit2.Response;
 public class VistaProximo extends AppCompatActivity {
     public List<DatosApi> lista = new ArrayList<>();
     public RecyclerView recyclerView;
+    private ImageView atras,wifi;
     public AdapterPeliculas adapterPeliculas;
     //private DatosApi item;
     private int page = 1;
     private boolean cargaPagina;
 
+    Button reintentar;
+    ProgressBar p1;
+    Context ctx = this;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista_proximo);
+
+        wifi=(ImageView) findViewById(R.id.wifiProximo);
+        reintentar =(Button) findViewById(R.id.reintentarProximo);
+        p1 = (ProgressBar) findViewById(R.id.progressBarProximo);
+
+        atras = findViewById(R.id.atrasproximo);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerproximo);
         recyclerView.setHasFixedSize(true);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -92,6 +110,22 @@ public class VistaProximo extends AppCompatActivity {
         optenDatos(page);
 
 
+        atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        reintentar.setEnabled(true);
+        atras.setEnabled(true);
     }
 
     public void optenDatos(int page) {
@@ -105,7 +139,7 @@ public class VistaProximo extends AppCompatActivity {
                 results info = response.body();
                 lista = Arrays.asList(info.getResults());
 
-                adapterPeliculas = new AdapterPeliculas(lista, getApplicationContext(), new AdapterPeliculas.OnItemClickListener() {
+                adapterPeliculas = new AdapterPeliculas(lista, ctx, new AdapterPeliculas.OnItemClickListener() {
                     @Override
                     public void onItemClick(DatosApi item) {
                         moveToDescripcion(item);
@@ -119,6 +153,48 @@ public class VistaProximo extends AppCompatActivity {
             @Override
             public void onFailure(Call<results> call, Throwable t) {
                 cargaPagina = true;
+
+                wifi.setVisibility(View.VISIBLE);
+                reintentar.setVisibility(View.VISIBLE);
+
+                reintentar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        reintentar.setEnabled(false);
+                        atras.setEnabled(false);
+                        p1.setVisibility(View.VISIBLE);
+
+                        Thread thread = new Thread() {
+                            @Override
+                            public void run() {
+                                super.run();
+                                for (int i = 0; i <=100; i++) {
+                                    try {
+                                        sleep(500);
+                                    }catch (InterruptedException e){
+                                        e.printStackTrace();
+                                    }
+                                    p1.setProgress(i);
+                                    i=i+10;
+                                }
+                            }
+                        };
+                        thread.start();
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                Intent intent = new Intent(VistaProximo.this,VistaProximo.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }, 5000);
+
+
+                    }
+                });
+
                 t.getMessage();
                 Toast.makeText(VistaProximo.this, "ERROR DE CONEXIÓN", Toast.LENGTH_SHORT).show();
                 Log.w("Prueba", " " + t.getMessage());

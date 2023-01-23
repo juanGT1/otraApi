@@ -2,26 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#97FFFFFF"
     android:layout_width="match_parent"
+    android:background="#97FFFFFF"
     android:layout_height="match_parent"
-    tools:context=".vista.DescripciondeFavorito">
+    tools:context=".vista.DescriCategorias">
 
 
-    <ImageView
-        android:id="@+id/atras2"
-        android:layout_width="34dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="retrocedee"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/homeAsUpIndicator"
-        tools:ignore="UsingOnClickInXml" />
 
     <ImageView
-        android:id="@+id/imgDescription2"
+        android:id="@+id/imgDescriptioncat"
         android:layout_width="244dp"
         android:layout_height="162dp"
         android:layout_marginTop="4dp"
@@ -42,7 +31,7 @@
         app:layout_constraintGuide_percent="0.27" />
 
     <TextView
-        android:id="@+id/tituloo2"
+        android:id="@+id/tituloocat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -54,52 +43,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
     <TextView
-        android:id="@+id/tvdescription2"
+        android:id="@+id/tvdescriptioncat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:textColor="@color/black"
         android:text="descripcion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloo2" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloocat" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView3cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:textColor="@color/black"
         android:text="vistas:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvdescription2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvdescriptioncat" />
 
     <TextView
-        android:id="@+id/visto2"
+        android:id="@+id/vistocat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="284dp"
-        android:textColor="@color/black"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.010"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/tvdescription2" />
+        app:layout_constraintStart_toEndOf="@+id/textView3cat"
+        app:layout_constraintTop_toBottomOf="@+id/tvdescriptioncat" />
 
     <RatingBar
-        android:id="@+id/califi2"
+        android:id="@+id/calificat"
         style="@style/Base.Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/app_name"
-        android:numStars="5"
+        android:numStars="10"
         android:progressTint="@color/teal_700"
         android:rating="1.5"
         android:secondaryProgressTint="@color/teal_700"
@@ -107,10 +92,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3cat" />
 
     <ImageView
-        android:id="@+id/imgfavorito2"
+        android:id="@+id/imgfavoritocat"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:visibility="visible"
@@ -119,12 +104,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/califi2"
+        app:layout_constraintTop_toBottomOf="@+id/calificat"
         app:layout_constraintVertical_bias="0.11"
         app:srcCompat="@drawable/corazon" />
 
     <ImageView
-        android:id="@+id/corazon2"
+        android:id="@+id/corazoncat"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -133,9 +118,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/califi2"
+        app:layout_constraintTop_toBottomOf="@+id/calificat"
         app:layout_constraintVertical_bias="0.11"
         app:srcCompat="@drawable/corazonfav" />
+
+    <ImageView
+        android:id="@+id/atrascat"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="retrocede"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UsingOnClickInXml"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

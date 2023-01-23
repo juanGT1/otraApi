@@ -51,12 +51,12 @@ public class AdapterFavorito extends  RecyclerView.Adapter<AdapterFavorito.ViewH
         ListaFavorito imagen = favoritoList.get(position);
         holder.titulo.setText(favoritoList.get(position).getTitle());
         holder.vistas.setText(favoritoList.get(position).getPopularity());
-        holder.calificacion.setRating(Float.parseFloat(favoritoList.get(position).getVote_average()));
+        holder.calificacion.setRating(Float.parseFloat(favoritoList.get(position).getVote_average())/2);
         holder.bindata(favoritoList.get(position));
         Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500" + imagen.getPoster_path())
                 .circleCrop()
-                .override(200,200)
+                .override(150,150)
                 .into(holder.portada);
     }
 

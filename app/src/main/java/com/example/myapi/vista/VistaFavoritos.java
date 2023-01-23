@@ -46,6 +46,7 @@ public class VistaFavoritos extends AppCompatActivity {
         inicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                inicio.setEnabled(false);
                 Intent intent = new Intent(VistaFavoritos.this,Vista.class);
                 startActivity(intent);
                 finish();

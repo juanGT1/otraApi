@@ -1,8 +1,7 @@
 package com.example.myapi.model;
 
-import android.content.Intent;
+import android.util.Log;
 
-import com.example.myapi.vista.VistaFavoritos;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -66,11 +65,12 @@ public class DatosApi implements Serializable {
         return vote_average;
     }
 
-    public void setVote_average(Integer vote_average) {
+    public void setVote_average(double vote_average) {
         this.vote_average = vote_average;
+        Log.w("vote", " " + vote_average);
     }
 
 
-
+//        setVote_average((double) (vote_average/2));
 
 }

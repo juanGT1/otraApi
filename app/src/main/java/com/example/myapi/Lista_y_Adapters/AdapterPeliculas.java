@@ -45,14 +45,18 @@ public class AdapterPeliculas extends RecyclerView.Adapter<AdapterPeliculas.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DatosApi imagen = datosApiList.get(position);
+
         holder.titulo.setText(datosApiList.get(position).getTitle());
         holder.vistas.setText(String.valueOf(datosApiList.get(position).getPopularity()));
-        holder.calificacionn.setRating((float) datosApiList.get(position).getVote_average());
+         datosApiList.get(position).setVote_average(datosApiList.get(position).getVote_average());
+        float calificacion = (float) datosApiList.get(position).getVote_average()/2;
+        holder.calificacionn.setRating(calificacion);
+        holder.calificacionn.bringToFront();
         holder.bindata(datosApiList.get(position));
         Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500" + imagen.getPoster_path())
                 .circleCrop()
-                .override(200,200)
+                .override(150,150)
                 .into(holder.portada);
 
 
@@ -62,12 +66,15 @@ public class AdapterPeliculas extends RecyclerView.Adapter<AdapterPeliculas.View
 
 
 
+
+
     @Override
     public int getItemCount() {
         return datosApiList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         ImageView portada,ojo;
         TextView titulo, vistas;
         RatingBar calificacionn;
@@ -80,9 +87,11 @@ public class AdapterPeliculas extends RecyclerView.Adapter<AdapterPeliculas.View
         }
 
         void bindata ( final DatosApi item){
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+//                    itemView.setEnabled(false);
                     listener.onItemClick(item);
                 }
             });

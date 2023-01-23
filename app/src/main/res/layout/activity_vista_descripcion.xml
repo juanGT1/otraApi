@@ -2,23 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#97FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".vista.VistaDescripcion">
 
 
 
-    <ImageView
-        android:id="@+id/atras"
-        android:layout_width="34dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="retrocede"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/flecha"
-        tools:ignore="UsingOnClickInXml" />
+
 
     <ImageView
         android:id="@+id/imgDescription"
@@ -58,6 +49,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textColor="@color/black"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:text="descripcion"
@@ -71,6 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:textColor="@color/black"
         android:text="vistas:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.03"
@@ -81,6 +74,7 @@
         android:id="@+id/visto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,24 +87,24 @@
         style="@style/Base.Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:contentDescription="@string/app_name"
-        android:numStars="10"
-        android:progressTint="@color/teal_700"
-        android:rating="1.5"
-        android:secondaryProgressTint="@color/teal_700"
+        android:layout_marginTop="8dp"
+        android:numStars="5"
+        android:rating="2.5"
         android:stepSize="0.5"
+        android:contentDescription="@string/app_name"
+        android:progressTint="@color/teal_700"
+        android:secondaryProgressTint="@color/teal_700"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ImageView
         android:id="@+id/imgfavorito"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:layout_width="26dp"
+        android:layout_height="27dp"
         android:layout_marginBottom="5dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.052"
@@ -133,6 +127,17 @@
         app:layout_constraintVertical_bias="0.11"
         app:srcCompat="@drawable/corazonfav" />
 
+    <ImageView
+        android:id="@+id/atras"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="retrocede"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UsingOnClickInXml"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

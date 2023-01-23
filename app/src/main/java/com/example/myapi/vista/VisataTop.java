@@ -8,9 +8,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.myapi.Lista_y_Adapters.AdapterPeliculas;
@@ -32,17 +38,30 @@ import retrofit2.Response;
 public class VisataTop extends AppCompatActivity  {
     private List<DatosApi> lista = new ArrayList<>();
     private RecyclerView recyclerView;
-    private AdapterPeliculas adapterPeliculas;
+    private ImageView atras,wifi;
+//    private AdapterPeliculas adapterPeliculas;
     private int page;
     private boolean cargaPagina;
+
+    Button reintentar;
+    ProgressBar p1;
+    Context ctx = this;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visata_top);
+
+        reintentar = (Button) findViewById(R.id.reintentartop);
+        p1 = (ProgressBar) findViewById(R.id.progressBartop);
+        wifi = (ImageView) findViewById(R.id.wifitop);
+
+        atras = findViewById(R.id.atrastop);
         recyclerView = (RecyclerView) findViewById(R.id.recyclertop);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -89,8 +108,21 @@ public class VisataTop extends AppCompatActivity  {
         optenDatos(page);
 
 
+        atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        reintentar.setEnabled(true);
+        atras.setEnabled(true);
 
     }
 
@@ -109,7 +141,7 @@ public class VisataTop extends AppCompatActivity  {
                 lista = Arrays.asList(info.getResults());
 
 
-                adapterPeliculas = new AdapterPeliculas( lista, getApplicationContext(), new AdapterPeliculas.OnItemClickListener() {
+                AdapterPeliculas adapterPeliculas = new AdapterPeliculas( lista, ctx, new AdapterPeliculas.OnItemClickListener() {
                     @Override
                     public void onItemClick(DatosApi item) {
                         moveToDescripcion(item);
@@ -123,6 +155,45 @@ public class VisataTop extends AppCompatActivity  {
             @Override
             public void onFailure(Call<results> call, Throwable t) {
                 cargaPagina = true;
+                wifi.setVisibility(View.VISIBLE);
+                reintentar.setVisibility(View.VISIBLE);
+
+                reintentar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        atras.setEnabled(false);
+                        reintentar.setEnabled(false);
+                        p1.setVisibility(View.VISIBLE);
+                        Thread thread = new Thread() {
+                            @Override
+                            public void run() {
+                                super.run();
+                                for (int i = 0; i <=100; i++) {
+                                    try {
+                                        sleep(500);
+                                    }catch (InterruptedException e){
+                                        e.printStackTrace();
+                                    }
+                                    p1.setProgress(i);
+                                    i=i+10;
+                                }
+                            }
+                        };
+                        thread.start();
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                Intent intent = new Intent(VisataTop.this,VisataTop.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }, 5000);
+
+
+                    }
+                });
                 t.getMessage();
                 Toast.makeText(VisataTop.this, "ERROR DE CONEXIÓN", Toast.LENGTH_SHORT).show();
                 Log.w("Prueba", " " + t.getMessage());

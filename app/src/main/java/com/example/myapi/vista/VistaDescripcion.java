@@ -40,7 +40,7 @@ public class VistaDescripcion extends AppCompatActivity {
         DatosApi datosApi = (DatosApi) getIntent().getExtras().getSerializable("datosApi");
         descripcion.setText(datosApi.getOverview());
         tituloo.setText(datosApi.getTitle());
-        calificacion.setRating((float) datosApi.getVote_average());
+        calificacion.setRating((float) datosApi.getVote_average()/2);
         vistas.setText(String.valueOf(datosApi.getPopularity()));
         titulo = datosApi.getTitle();
         //Log.w("Titulo",datosApi.getTitle());

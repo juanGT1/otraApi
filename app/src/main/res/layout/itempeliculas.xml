@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="#F4F4F4"
     android:animateLayoutChanges="true"
     android:layout_gravity="center_horizontal"
     app:cardCornerRadius="15dp"
@@ -21,11 +20,11 @@
             android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="9dp"
-            android:layout_marginEnd="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:text="@string/que_estas_buscando"
-            android:textColor="@color/black"
             android:textSize="17sp" />
 
         <RelativeLayout
@@ -50,31 +49,29 @@
                 android:id="@+id/vistas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="1dp"
                 android:layout_toEndOf="@+id/imagenpelicula"
                 android:hint="@string/vistas"
                 android:textSize="11sp" />
 
-
             <RatingBar
                 android:id="@+id/calificacion"
                 style="@style/Base.Widget.AppCompat.RatingBar.Small"
-                android:layout_width="wrap_content"
+                android:layout_width="81dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/vistas"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="7dp"
-                android:layout_marginEnd="77dp"
                 android:layout_toEndOf="@+id/imagenpelicula"
                 android:contentDescription="@string/app_name"
-                android:numStars="10"
+                android:numStars="5"
                 android:progressTint="@color/teal_700"
-                android:rating="1.5"
+                android:rating="2.5"
                 android:secondaryProgressTint="@color/teal_700"
-                android:stepSize="0.5" />
+                android:stepSize="0.5"
+                />
 
         </RelativeLayout>
 

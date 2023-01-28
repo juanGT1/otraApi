@@ -129,15 +129,15 @@
 
     <ImageView
         android:id="@+id/atras"
-        android:layout_width="34dp"
-        android:layout_height="37dp"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:onClick="retrocede"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UsingOnClickInXml"
-        app:srcCompat="?attr/homeAsUpIndicator" />
+        app:srcCompat="?attr/homeAsUpIndicator"
+        tools:ignore="UsingOnClickInXml" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
